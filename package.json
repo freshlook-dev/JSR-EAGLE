@@ -1,6 +1,7 @@
 {
   "name": "jsr-eagle-construction",
   "version": "1.0.0",
+  "description": "Premium Next.js website for JSR Eagle Construction LTD.",
   "private": true,
   "scripts": {
     "dev": "next dev",
