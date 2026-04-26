@@ -48,12 +48,36 @@ const services = [
 ];
 
 const galleryTiles = [
-  "Bookmatched porcelain",
-  "Matte black stone",
-  "Red geometric floor",
-  "Metal trim detail",
-  "Wet-room wall tile",
-  "Commercial surface"
+  {
+    title: "Patterned Wet Room",
+    tag: "Bathroom tile",
+    src: "/photos/bathroom-pattern-tile.jpg"
+  },
+  {
+    title: "Marble Shower Finish",
+    tag: "Large-format tile",
+    src: "/photos/marble-shower-tile.jpg"
+  },
+  {
+    title: "Levelled Floor System",
+    tag: "Precision install",
+    src: "/photos/tile-levelers.jpg"
+  },
+  {
+    title: "Commercial Tile Crew",
+    tag: "Renovation site",
+    src: "/photos/commercial-tilers.jpg"
+  },
+  {
+    title: "Wall Tile Setting",
+    tag: "Exterior / pool surface",
+    src: "/photos/wall-tiler.jpg"
+  },
+  {
+    title: "Stone Kitchen Backsplash",
+    tag: "Premium kitchen",
+    src: "/photos/kitchen-stone-backsplash.jpg"
+  }
 ];
 
 const process = [
@@ -145,6 +169,13 @@ function Hero() {
           <BadgeCheck size={18} aria-hidden="true" />
         </div>
         <Image src="/jsr-eagle-logo.png" alt="JSR Eagle Construction LTD logo" width={500} height={500} priority />
+        <div className="hero-photo-strip" aria-label="Tile project photography">
+          {galleryTiles.slice(0, 3).map((item) => (
+            <div key={item.title}>
+              <Image src={item.src} alt={item.title} fill sizes="120px" />
+            </div>
+          ))}
+        </div>
         <div className="hero-card-bottom">
           <span>Precision surfaces</span>
           <strong>Premium execution</strong>
@@ -195,6 +226,10 @@ function TileIdentity() {
         <div className="material material-black">Matte Black</div>
         <div className="material material-metal">Metal Trim</div>
       </div>
+      <div className="texture-photo" aria-label="Gloss tile texture">
+        <Image src="/photos/gloss-tile-texture.jpg" alt="Close-up of glossy white tile texture" fill sizes="(max-width: 1120px) 100vw, 45vw" />
+        <span>Real tile texture</span>
+      </div>
     </section>
   );
 }
@@ -228,9 +263,14 @@ function Showcase() {
       </div>
       <div className="showcase-grid">
         {galleryTiles.map((item, index) => (
-          <article className={`showcase-tile tile-${index + 1}`} key={item}>
+          <article className={`showcase-tile tile-${index + 1}`} key={item.title}>
+            <Image src={item.src} alt={item.title} fill sizes="(max-width: 1120px) 50vw, 18vw" />
+            <div className="showcase-overlay" />
             <span>{String(index + 1).padStart(2, "0")}</span>
-            <h3>{item}</h3>
+            <div>
+              <p>{item.tag}</p>
+              <h3>{item.title}</h3>
+            </div>
           </article>
         ))}
       </div>
